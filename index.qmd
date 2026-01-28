@@ -187,7 +187,7 @@ print(f"Number of presenters: {len(presenters)}")
 
 import random
 ## seed jointly set by the class
-seed_s26 = 723
+seed_s26 = 723 + 2026 + 125 
 print(f"Random seed: {seed_s26}")
 random.seed(seed_s26)
 random.sample(presenters, len(presenters))
@@ -332,7 +332,8 @@ Contribution to the class notes is through a `pull request'.
 
 
 I have added a template file `_mysection.qmd` as an example, 
-which is includeed in `index.qmd`. See also how `_ethics.qmd` is 
+which is includeed in `index.qmd`. 
+See also how `_ethics.qmd` is 
 included into `05-ethics_communication.qmd` for example.
 
 
