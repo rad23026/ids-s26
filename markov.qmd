@@ -56,7 +56,7 @@ $$
 \pi P = \pi
 $$
 
-where P is the transition matrix. The values of $\pi\$ represent the long run
+where P is the transition matrix. The values of $\pi$ represent the long run
 probabilities of being in a specific state.  
 
 It also satisfies the normalization condition:
@@ -73,20 +73,20 @@ behavior of a Markov chain regardless of the initial state.
 
 Consider the transition matrix
 
-\[
+\
 
 \begin{bmatrix}
 0.7 & 0.2 & 0.1 \\
 0.1 & 0.6 & 0.3 \\
 0.2 & 0.5 & 0.3
 \end{bmatrix}
-\]
+\
 
 
 ---
 
 
-## Step 1: Transition Matrix
+##### Step 1: Transition Matrix
 
 The transition matrix is:
 
@@ -113,7 +113,7 @@ $$
 
 ---
 
-## Step 2: System of Equations
+##### Step 2: System of Equations
 
 $$
 \begin{aligned}
@@ -135,7 +135,7 @@ $$
 
 ---
 
-## Step 3: Solve for <span>$\pi_1$</span>
+##### Step 3: Solve for <span>$\pi_1$</span>
 
 From the first equation:
 
@@ -145,7 +145,7 @@ $$
 
 ---
 
-## Step 4: Substitute into second equation
+##### Step 4: Substitute into second equation
 
 $$
 -0.2\left(\frac{1}{3}\pi_2 + \frac{2}{3}\pi_3\right) + 0.4 \pi_2 - 0.5 \pi_3 = 0
@@ -165,7 +165,7 @@ $$
 
 ---
 
-## Step 5: Apply normalization
+##### Step 5: Apply normalization
 
 $$
 \pi_1 + \pi_2 + \pi_3 = 1 \implies 1.3 \pi_3 + 1.9 \pi_3 + \pi_3 = 4.2 \pi_3 = 1
@@ -177,7 +177,7 @@ $$
 
 ---
 
-## Step 6: Final Stationary Distribution
+##### Step 6: Final Stationary Distribution
 
 $$
 \pi = (\pi_1, \pi_2, \pi_3) \approx (0.3095, 0.4524, 0.2381)
@@ -187,9 +187,9 @@ $$
 
 ## Multistep Transition Probabilities in Markov Chains
 
-Let \( P \) be the one-step transition matrix of a Markov chain.
+Let P be the one-step transition matrix of a Markov chain.
 
-The **n-step transition probability** from state \( i \) to state \( j \) is defined as
+The **n-step transition probability** from state i to state j is defined as
 
 \$$
 p_{ij}^{(n)} = \Pr(X_n = j | X_0 = i).
@@ -257,6 +257,7 @@ for i in range(1, 17, 3):
     )
 ```
 
+---
 
 ### Real World Examples
 
@@ -322,6 +323,8 @@ print("\nLong-Run Limit Matrix:\n")
 print(P_inf)
 ```
 
+---
+
 # Hidden Markov Models
 
 ## What is a Hidden Markov Model?
@@ -345,7 +348,7 @@ $t=t_{0}$ given $X$ at time $t=t_0$
 Let us continue with another example involving the weather.
 
 - Suppose that we cannot go outside and cannot tell what the weather is
-- Our only indicator of possible weather is what our neighbor is doing
+- Our only indicator of possible weather is what our roommate is doing
 
 ### Hidden States
 
@@ -358,7 +361,7 @@ $$
 The weather evolves according to a Markov chain:
 
 $$
-\Pr(X_{t+1} \mid X_t)
+\P(X_{t+1} \mid X_t)
 $$
 
 This means tomorrow’s weather depends only on today’s weather.
@@ -378,21 +381,20 @@ $$
 The observation depends only on the current hidden state:
 
 $$
-\Pr(Y_t \mid X_t)
+\P(Y_t \mid X_t)
 $$
 
 For example:
 
 - If it is Rainy, cleaning or shopping probability might be high.
-- If it is Sunny, walking probability might be low.
+- If it is Sunny, walking probability might be high.
 
 ---
 
 ### Matrices 
 
 - Remember we have a transition matrix describing how weather changes
-- Now we need a matrix to describe how the weather effects the activity
-This is called an **emission matrix**
+- Now we need a matrix to describe how the weather effects the activity, which is called an **emission matrix**
 - It defines the probability of a specific observable output symbol being generated from a particular hidden state
 - For N states and M observations, this is an N by M matrix
 - Rows sum to 1
@@ -418,7 +420,7 @@ The second assumption is that each observation $Y_t$ is generated only from the 
 
 - The outcome of $Y$ at time $t=t_{0}$ must be "influenced" exclusively by the outcome of $X$ at $t=t_{0}$
 - The decision to on what activity to do is only influenced by the weather
-- You wouldn't use go for a walk today because of the weather yesterday, or based on what you did yesterday
+- You wouldn't go for a walk today because of the weather yesterday, or based on what you did yesterday
 - You can see this idea well on the graph, where x is the hidden state weather, 
 and y is the known state (activity)
 
@@ -431,8 +433,9 @@ and y is the known state (activity)
 The **forward algorithm** is used in Hidden Markov Models (HMMs) to compute the probability of an observed sequence. Instead of listing every possible hidden state sequence (which grows exponentially), it uses dynamic programming to build the answer step by step.
 
 At each time step, the algorithm keeps track of the probability of being in each hidden state, given all observations seen so far. It updates these probabilities by combining
-- the previous step’s probabilities,
-- the transition probabilities between states, and
+
+- the previous step’s probabilities
+- the transition probabilities between state
 - the likelihood of the current observation.
 
 By moving forward through time and updating these values recursively, the algorithm efficiently computes the total probability of the full observation sequence.
@@ -490,9 +493,9 @@ print("Total probability:", prob)
 
 ---
 
-# Hidden Markov Model: Weather Example
+### Hidden Markov Model: Weather Example
 
-## Model Setup
+#### Model Setup
 
 Initial probabilities:
 
@@ -532,7 +535,7 @@ $$
 
 ---
 
-# Forward Algorithm
+### Forward Algorithm
 
 We compute:
 
@@ -542,7 +545,7 @@ $$
 
 ---
 
-## Step 0 (Initialization)
+#### Step 0 (Initialization)
 
 $$
 \alpha_0(j) = \pi_j B_{j,O_0}
@@ -571,7 +574,7 @@ $$
 
 ---
 
-## Step 1 (Observation = shop)
+#### Step 1 (Observation = shop)
 
 $$
 \alpha_1(j) =
@@ -630,7 +633,7 @@ $$
 
 ---
 
-## Step 2 (Observation = clean)
+#### Step 2 (Observation = clean)
 
 ### Rainy
 
@@ -681,7 +684,7 @@ $$
 
 ---
 
-## Termination Step
+#### Termination Step
 
 $$
 P(O) = \sum_j \alpha_2(j)
@@ -697,7 +700,7 @@ $$
 
 ---
 
-# Final Result
+### Final Result
 
 $$
 P(\text{walk, shop, clean}) = 0.033612
