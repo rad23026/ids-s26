@@ -28,7 +28,7 @@ Hello! My name is Jonathan Trnka and this is my presentation on LLM Agents!
 - Explain what makes an LLM-Agent different
 - Compare them
 - Explain my process 
-- Use statistical tools to explain my data
+- Use statistical tools to explain my dat
 - Conclusion
  
 
@@ -228,7 +228,9 @@ def reset_logs():
     """Delete all JSONL and CSV log files so the next experiment starts clean."""
     files_to_delete = [
         "agent_runs.jsonl",
-        "baseline_runs.jsonl"
+        "baseline_runs.jsonl",
+        "agent_runs.csv",
+        "baseline_runs.csv"
     ]
 
     for f in files_to_delete:

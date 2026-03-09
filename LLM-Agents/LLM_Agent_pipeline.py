@@ -13,8 +13,6 @@ def run_regression_comparison(
     # Load logs
     # ============================
     agent = pd.read_json(agent_file, lines=True)
-    print("AGENT COLUMNS:", agent.columns.tolist())
-    print(agent.head(3))
     base = pd.read_json(baseline_file, lines=True)
 
     # ============================
@@ -34,24 +32,9 @@ def run_regression_comparison(
             return "failure-recovery"
         return "ambiguous/complex"
 
-    valid_categories = {
-        "weather",
-        "math",
-        "search/knowledge",
-        "multi-tool",
-        "failure-recovery",
-        "ambiguous/complex"
-    }
     agent["query_type"] = agent["query"].apply(classify_query)
     base["query_type"] = base["query"].apply(classify_query)
 
-    agent["query_type"] = agent["query_type"].apply(
-        lambda c: c if c in valid_categories else "ambiguous/complex"
-    )
-
-    base["query_type"] = base["query_type"].apply(
-        lambda c: c if c in valid_categories else "ambiguous/complex"
-    )
         # ============================
     # Ensure predictor exists
     # ============================
