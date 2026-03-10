@@ -1,8 +1,8 @@
 
-## Welcome to Database Operation with Structured Query Language(SQL)!
-This presentation was prepared by Shreya Sudarsanam
 
-## How To Use SQL In Python With Pandas Using a SQL-Created Table
+This presentation was prepared by Shreya Sudarsanam.
+
+### How To Use SQL In Python With Pandas Using a SQL-Created Table
 
 * First, we will import pandas
 * Then, we will import sqlite3
@@ -43,7 +43,7 @@ pandas_data_frame = pd.read_sql_query(sql_query, sql_database_connection)
 print(pandas_data_frame)
 ```
 
-## How To Use SQL In Python With Pandas Data Frame
+### How To Use SQL In Python With Pandas Data Frame
 
 * First, we will import pandas
 * Then, we will import sqlite3
@@ -101,7 +101,7 @@ data_frame_select_all = pd.read_sql_query(sql_query_new, sql_database_connection
 print(data_frame_select_all)
 ```
 
-## Different Ways To Establish SQL Database Connections
+### Different Ways To Establish SQL Database Connections
 
 SQL Database Connections can be establish two ways: You can either:
 * create a temporary database in memory
@@ -117,7 +117,7 @@ Example of creating a named database that can be saved:
 sql_database_connection = sqlite3.connect("lemonade_stand_business.db")
 ```
 
-## How To Use SQLite 3 In Python Without Pandas
+### How To Use SQLite 3 In Python Without Pandas
 
 * Import sqlite3
 ```{python}
@@ -169,7 +169,7 @@ sql_table_result = cursor.fetchall()
 print(sql_table_result)
 ```
 
-## How to display cursor.fetchall() results in a pandas data frame
+### How to display cursor.fetchall() results in a pandas data frame
 
 ```{python}
 cursor.execute('SELECT * FROM new_lemonade_stand')
@@ -179,31 +179,31 @@ data_frame_fetched = pd.DataFrame(rows_fetched, columns=columns_fetched)
 print(data_frame_fetched)
 ```
 
-## Types of Commands In SQL
+### Types of Commands In SQL
 
-### Data Definition Language (DDL):
+#### Data Definition Language (DDL):
 * 1. SQL statements that name, change the structuer of, and
 eliminate objects in a database
 
-### Data Control Language (DCL):
+#### Data Control Language (DCL):
 * 2. SQL statements that control who has access to
 database data.
 
-### Data Manipulation Language (DML):
+#### Data Manipulation Language (DML):
 * 3. SQL statements that do not impact database structure.
 Instead, these statements change/access objects inside a database.
 
-### Data Transaction Control (DTC):
+#### Data Transaction Control (DTC):
 * 4.Track how Data Manipulation Language commands
 change objects in a database by logging these
 changes as transactions.
 
-## Exploring Types of Data Manipulation Language (DML) Commands
+### Exploring Types of Data Manipulation Language (DML) Commands
 * 1. Selection: Involves selecting specific rows from a table
 * 2. Projection: Involves selecting specific columns from a table
 * 3. Joining: Involves joining tables together
 
-### Exploring SELECTION with organic_lemonade_stand data table:
+#### Exploring SELECTION with organic_lemonade_stand data table:
 
 The below code helps create the organic_lemonade_stand data table:
 ```{python}
@@ -226,7 +226,7 @@ data_frame_fetched = pd.DataFrame(rows_fetched, columns=columns_fetched)
 print(data_frame_fetched)
 ```
 
-### Exploring PROJECTION with organic_lemonade_stand database
+#### Exploring PROJECTION with organic_lemonade_stand database
 The owner column is being selected
 ```{python}
 cursor.execute('SELECT owner FROM organic_lemonade_stand')
@@ -236,7 +236,7 @@ data_frame_fetched = pd.DataFrame(rows_fetched, columns=columns_fetched)
 print(data_frame_fetched)
 ```
 
-### Exploring SELECTION & PROJECTION combined
+#### Exploring SELECTION & PROJECTION combined
 The owner column is being selected (projection), and rows where weekly_expenses_avg is greater than 100 is also selected (selection).
 
 ```{python}
@@ -247,7 +247,7 @@ data_frame_fetched = pd.DataFrame(rows_fetched, columns=columns_fetched)
 print(data_frame_fetched)
 ```
 
-### Exploring JOINING with organic_lemonade_stand data table and sparkling_lemon_water data table
+#### Exploring JOINING with organic_lemonade_stand data table and sparkling_lemon_water data table
 
 The below code creates the sparkling_lemon_water data table:
 ```{python}
@@ -259,7 +259,7 @@ cursor.execute('INSERT INTO sparkling_lemon_water VALUES ("Samantha", "New York"
 sql_database_connection.commit()
 ```
 
-#### INNER JOIN: A type of SQL join where rows that are common in both tables are presented in the output.
+##### INNER JOIN: A type of SQL join where rows that are common in both tables are presented in the output.
 
 ```{python}
 cursor.execute('SELECT * FROM organic_lemonade_stand INNER JOIN sparkling_lemon_water ON organic_lemonade_stand.location = sparkling_lemon_water.location')
@@ -269,7 +269,7 @@ data_frame_fetched = pd.DataFrame(rows_fetched, columns=columns_fetched)
 print(data_frame_fetched)
 ```
 
-#### LEFT JOIN: A type of SQL join where every row in the left table is shown in the output, along with rows in the right table that match the left table
+##### LEFT JOIN: A type of SQL join where every row in the left table is shown in the output, along with rows in the right table that match the left table
 
 ```{python}
 cursor.execute('SELECT * FROM organic_lemonade_stand LEFT JOIN sparkling_lemon_water ON organic_lemonade_stand.location = sparkling_lemon_water.location')
@@ -279,7 +279,7 @@ data_frame_fetched = pd.DataFrame(rows_fetched, columns=columns_fetched)
 print(data_frame_fetched)
 ```
 
-#### RIGHT JOIN: A type of SQL join where every row in the right table is shown in the output, along withh rows in the left table that match the right table.
+##### RIGHT JOIN: A type of SQL join where every row in the right table is shown in the output, along withh rows in the left table that match the right table.
 
 ```{python}
 cursor.execute('SELECT * FROM organic_lemonade_stand RIGHT JOIN sparkling_lemon_water ON organic_lemonade_stand.location = sparkling_lemon_water.location')
@@ -289,7 +289,7 @@ data_frame_fetched = pd.DataFrame(rows_fetched, columns=columns_fetched)
 print(data_frame_fetched)
 ```
 
-## Using Aliases In DML Statements
+### Using Aliases In DML Statements
 
 To reference a table, it may be easier to "alias" the table or shorten the table's name, to make the code more readable. Below is the JOINING command, but with table aliases:
 
@@ -301,7 +301,7 @@ data_frame_fetched = pd.DataFrame(rows_fetched, columns=columns_fetched)
 print(data_frame_fetched)
 ```
 
-## Using DISTINCT in DML
+### Using DISTINCT in DML
 The sparkling_lemon_water contains duplicate rows for the owner, Samantha.
 To only return one distinct row, we need to use the DISTINCT command.
 
@@ -313,12 +313,12 @@ data_frame_fetched = pd.DataFrame(rows_fetched, columns=columns_fetched)
 print(data_frame_fetched)
 ```
 
-## Logical Operators
+### Logical Operators
 * 1. AND: If both conditions are TRUE, the entire expression is TRUE
 * 2. OR: If at least one condition is TRUE, the entire expression is TRUE
 * 3. NOT: Returns TRUE if NOT FALSE, and Returns FALSE if NOT TRUE
 
-### Example of AND - Logical Operators
+#### Example of AND - Logical Operators
 ```{python}
 cursor.execute('SELECT * FROM organic_lemonade_stand WHERE weekly_expenses_avg < 300 AND weekly_sales_avg > 200')
 rows_fetched = cursor.fetchall()
@@ -327,7 +327,7 @@ data_frame_fetched = pd.DataFrame(rows_fetched, columns=columns_fetched)
 print(data_frame_fetched)
 ```
 
-### Example of OR - Logical Operators
+#### Example of OR - Logical Operators
 ```{python}
 cursor.execute('SELECT * FROM organic_lemonade_stand WHERE weekly_expenses_avg < 300 OR weekly_sales_avg > 500')
 rows_fetched = cursor.fetchall()
@@ -336,7 +336,7 @@ data_frame_fetched = pd.DataFrame(rows_fetched, columns=columns_fetched)
 print(data_frame_fetched)
 ```
 
-### Example of NOT - Logical Operators
+#### Example of NOT - Logical Operators
 ```{python}
 cursor.execute('SELECT * FROM organic_lemonade_stand WHERE NOT weekly_expenses_avg < 100')
 rows_fetched = cursor.fetchall()
@@ -345,7 +345,7 @@ data_frame_fetched = pd.DataFrame(rows_fetched, columns=columns_fetched)
 print(data_frame_fetched)
 ```
 
-## Arithmetic Operators
+### Arithmetic Operators
 We can create a new alias, weekly_profits_avg, by subtracting
 the weekly_expenses_avg column from the weekly_sales_column, using arithmetic
 operators.
@@ -358,7 +358,7 @@ data_frame_fetched = pd.DataFrame(rows_fetched, columns=columns_fetched)
 print(data_frame_fetched)
 ```
 
-## Concatenation Operators
+### Concatenation Operators
 We can concatenate two columns together using a special concatenation operator:
 ```{python}
 cursor.execute("SELECT owner||': '||location AS 'owner location' FROM organic_lemonade_stand")
@@ -370,7 +370,7 @@ print(data_frame_fetched)
 
 In this example, the owner and location columns are being concatenated to form the owner location column.
 
-## ORDER BY and DESC
+### ORDER BY and DESC
 We can find what owner is the most profitable by using the ORDER BY operator.
 ORDER BY always orderes entries from least to greatest. However, ORDER BY (insert name of column) DESC to order the columns from greatest to least.
 
@@ -393,7 +393,7 @@ data_frame_fetched = pd.DataFrame(rows_fetched, columns=columns_fetched)
 print(data_frame_fetched)
 ```
 
-## Set Operators
+### Set Operators
 * 1. UNION: Produces a set combining outputs created by 2 SELECT queries.
 Any rows that are duplicated are not part of the resulting set.
 
@@ -476,13 +476,13 @@ data_frame_fetched = pd.DataFrame(rows_fetched, columns=columns_fetched)
 print(data_frame_fetched)
 ```
 
-## Subqueries
+### Subqueries
 * Subqueries are smaller queries within a larger query. When subqueries are evaluated, they help filter the data, and this filter can applied to the larger query.
 
-### Two Types of Subqueries
+#### Two Types of Subqueries
 * The two types of subqueries are Inline Views and Nested Subqueries
 
-#### Inline Views
+##### Inline Views
 * When a SELECT statement has a FROM cause that contains a subquery, this is
 called an Inline View.
 
@@ -495,7 +495,7 @@ data_frame_fetched = pd.DataFrame(rows_fetched, columns=columns_fetched)
 print(data_frame_fetched)
 ```
 
-#### Nested Subquery
+##### Nested Subquery
 * When a SELECT statement has a WHERE clause that contains a subquery, this is
 called a Nested Subquery.
 
@@ -518,11 +518,11 @@ data_frame_fetched = pd.DataFrame(rows_fetched, columns=columns_fetched)
 print(data_frame_fetched)
 ```
 
-### Classes of Subqueries
+#### Classes of Subqueries
 * Subqueries can be categorized further into three classes.
 * The three classes of Subqueries are as follows: Single-row subqueries, Multiple-row subqueries, and Correlated subqueries
 
-#### Single Row Subqueries
+##### Single Row Subqueries
 1. Single-row subqueries: Subqueries that output a single row, which is then evaluated by the outer query
 
 Example:
@@ -534,7 +534,7 @@ data_frame_fetched = pd.DataFrame(rows_fetched, columns=columns_fetched)
 print(data_frame_fetched)
 ```
 
-#### Multiple-Row Subqueries
+##### Multiple-Row Subqueries
 * 2. Multiple-row subqueries: Subqueries that output many rows, which are then evluated by the outer query
 
 Example:
@@ -550,7 +550,7 @@ data_frame_fetched = pd.DataFrame(rows_fetched, columns=columns_fetched)
 print(data_frame_fetched)
 ```
 
-#### Correlated Subqueries
+##### Correlated Subqueries
 * 3. Correlated subqueries: Subqueries that depend on the outer query because they reference column information from the outer query
 
 Example:
@@ -562,7 +562,7 @@ data_frame_fetched = pd.DataFrame(rows_fetched, columns=columns_fetched)
 print(data_frame_fetched)
 ```
 
-## Data Visualization Using SQL
+### Data Visualization Using SQL
 
 How to Present SQL table result using matplotlib:
 
@@ -586,17 +586,17 @@ plt.title("Average Weekly Expenses by Location")
 plt.show()
 ```
 
-## How to Close a SQL Database Connection
+### How to Close a SQL Database Connection
 ```{python}
 sql_database_connection.close()
 ```
 
-## Further Resources:
-### Books:
+#### Further Resources:
+#### Books:
 * Oracle Database 12C SQL by Matthew Morris
 * Geeks for Geeks SQL Manual
 * Learning SQL by Alan Beaulieu
-### Websites:
+#### Websites:
 * https://www.geeksforgeeks.org/python/python-sqlite-connecting-to-database/
 * https://docs.python.org/3/library/sqlite3.html
 * https://datacarpentry.github.io/python-ecology-lesson/instructor/09-working-with-sql.html

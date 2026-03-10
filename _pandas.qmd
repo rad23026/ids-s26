@@ -1,5 +1,4 @@
 
-## Pandas
 
 This presentation is prepared by Jinha. 
 
