@@ -1,6 +1,5 @@
-## Random Forest Classifier 
 
-This presentation was prepared by Sara Watanabe
+This presentation was prepared by Sara Watanabe.
 
 ### Overview
 
